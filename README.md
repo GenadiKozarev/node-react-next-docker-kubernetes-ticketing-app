@@ -8,4 +8,4 @@
 - Ticket prices can be edited if they are not locked
 
 ## Tables
-<img width="800" alt="Screenshot 2023-07-15 at 16 17 23" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/80763404-f992-4b57-be50-fecd73e159d4">
+<img width="800" alt="Tables" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/80763404-f992-4b57-be50-fecd73e159d4">

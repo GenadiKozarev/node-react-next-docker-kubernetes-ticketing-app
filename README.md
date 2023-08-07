@@ -23,3 +23,6 @@
 
 ## Notes about the overall design of each service
 <img width="945" alt="overall-design-of-each-service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/28d6de4d-d1e0-4980-b61d-563383a0efa5">
+
+#### dependencies notes
+- `ts-node-dev` - tool to execute the project in a development environment

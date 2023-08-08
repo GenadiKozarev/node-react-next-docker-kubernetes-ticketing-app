@@ -27,8 +27,12 @@
 #### dependencies notes
 - `ts-node-dev` - tool to execute the project in a development environment
 
-#### commands
-- Docker's version was causing a problem with the `skaffold dev` command - the fix was adding a variable like so:
+#### knows issues
+- Issue 1:
+```
+getting imageID for {{DOCKER_IMAGE}}: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+```
+- Fix 1:
 ```
 DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock skaffold dev
 ```

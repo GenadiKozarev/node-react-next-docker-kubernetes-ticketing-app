@@ -10,8 +10,8 @@ spec:
     # made up site name which will work only on my machine
     # Set it up on MacOs/Linux in /etc/hosts
     # Set it up on Windows in C:\Windows\System32\Drivers\etc\hosts
-    # e.g. 127.0.0.1 ticketing.dev
-    - host: ticketing.dev
+    # e.g. 127.0.0.1 ticketing.com
+    - host: ticketing.com
       http:
         paths:
           - path: /api/users/?(.*)

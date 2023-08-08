@@ -26,3 +26,9 @@
 
 #### dependencies notes
 - `ts-node-dev` - tool to execute the project in a development environment
+
+#### commands
+- Docker's version was causing a problem with the `skaffold dev` command - the fix was adding a variable like so:
+```
+DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock skaffold dev
+```

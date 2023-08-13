@@ -36,3 +36,8 @@ getting imageID for {{DOCKER_IMAGE}}: Cannot connect to the Docker daemon at uni
 ```
 DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock skaffold dev
 ```
+
+#### commands
+```
+skaffold dev // start
+```

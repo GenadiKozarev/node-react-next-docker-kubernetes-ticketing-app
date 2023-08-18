@@ -17,7 +17,7 @@ router.post(
     (req: Request, res: Response) => {
         const errors = validationResult(req);
         // if the errors' obj is not empty
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             throw new RequestValidationError(errors.array());
         }
 

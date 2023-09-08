@@ -48,6 +48,17 @@ getting imageID for {{DOCKER_IMAGE}}: Cannot connect to the Docker daemon at uni
 DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock skaffold dev
 ```
 
+- Issue 2:
+```
+Error from server (InternalError): error when creating "STDIN": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": failed to call webhook: Post "https://ingress-nginx-controller-admission.ingress-nginx.svc:443/networking/v1/ingresses?timeout=10s": dial tcp 10.110.162.108:443: connect: connection refused
+```
+- Fix 2:
+run this command before `skaffold`
+```
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+```
+
+
 #### commands
 ```
 skaffold dev // start

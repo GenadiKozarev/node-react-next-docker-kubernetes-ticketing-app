@@ -17,7 +17,7 @@
 
 ### Auth
 <img width="901" alt="auth" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/ef5b8969-5fa3-4f82-8708-e5e8fd4b7a39">
-<img width="991" alt="auth service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/0d35ef01-6390-4859-82fb-7a3d4e4204b2">
+<img width="1494" alt="auth process" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/6a8b48f4-597f-4074-864c-37915d69bea9">
 
 ## Events
 <img width="867" alt="events" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/5e6a920e-c2bc-4d64-b3ef-7c998ee8038b">

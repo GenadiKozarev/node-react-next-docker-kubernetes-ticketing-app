@@ -63,3 +63,13 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 skaffold dev // start
 ```
+
+- how to create kubectl secret for storing JTW information:
+```
+kubectl create secret generic {{NAME_OF_SECRET}} --from-literal={{KEY}}={{VALUE}}
+```
+
+- how to see all secrets:
+```
+kubectl get secrets
+```

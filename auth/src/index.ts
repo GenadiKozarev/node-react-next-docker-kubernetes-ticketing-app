@@ -2,6 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import mongoose from 'mongoose';
+import cookieSession from 'cookie-session';
 
 import { currentUserRouter } from './routes/current-user';
 import { signInRouter } from './routes/sign-in';
@@ -11,7 +12,20 @@ import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 
 const app = express();
+/* 
+Make sure express is aware that is behind a proxy of ingress-nginx
+and should still trust traffic as being secure even thou it's coming from that proxy
+*/
+app.set('trust proxy', true);
 app.use(json());
+app.use(
+    cookieSession({
+        // Disable encryption because the JWT is already encrypted
+        signed: false,
+        // Cookies will only be used if the user is visiting via https connection
+        secure: true,
+    })
+);
 
 app.use(currentUserRouter);
 app.use(signInRouter);

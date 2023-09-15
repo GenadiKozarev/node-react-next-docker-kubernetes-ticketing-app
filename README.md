@@ -37,6 +37,8 @@ Common Response Structure
 
 #### dependencies notes
 - `ts-node-dev` - tool to execute the project in a development environment
+- `mongodb-memory-server` - copy of mongodb will be running in-memory in order to test multiple databases at the same time, hence be able to run tests for different services concurrently on the same machine
+
 
 ### knows issues
 - Issue 1:

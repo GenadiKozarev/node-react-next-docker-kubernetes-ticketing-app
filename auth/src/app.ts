@@ -21,8 +21,11 @@ app.use(
     cookieSession({
         // Disable encryption because the JWT is already encrypted
         signed: false,
-        // Cookies will only be used if the user is visiting via https connection
-        secure: true,
+        /*
+        Cookies will only be used if the user is visiting via https connection
+        and we're not in a test environment
+        */
+        secure: process.env.NODE_ENV !== 'test',
     })
 );
 

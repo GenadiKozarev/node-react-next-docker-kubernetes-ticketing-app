@@ -13,11 +13,19 @@ spec:
     # e.g. 127.0.0.1 ticketing.dev
     - host: ticketing.dev
       http:
+        # Important: The paths will be tried in order
         paths:
           - path: /api/users/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: auth-srv
+                port:
+                  number: 3000
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: client-srv
                 port:
                   number: 3000

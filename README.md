@@ -74,4 +74,6 @@ kubectl create secret generic {{NAME_OF_SECRET}} --from-literal={{KEY}}={{VALUE}
 - how to see all secrets:
 ```
 kubectl get secrets
+kubectl get namespace
+kubectl get services -n ingress-nginx
 ```

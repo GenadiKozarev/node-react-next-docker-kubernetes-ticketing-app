@@ -76,4 +76,13 @@ kubectl create secret generic {{NAME_OF_SECRET}} --from-literal={{KEY}}={{VALUE}
 kubectl get secrets
 kubectl get namespace
 kubectl get services -n ingress-nginx
+
+// open a shell inside a pod
+kubectl get pods
+kubectl exec -it {{POD_NAME}} sh
+```
+
+- create TypeScript config file
+```
+tsc --init
 ```

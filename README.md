@@ -1,4 +1,4 @@
-# Ticketing App
+# Ticketing App test
 
 - Users can list a ticket for an event (concert, sports) for sale
 - Other users can purchase that ticket

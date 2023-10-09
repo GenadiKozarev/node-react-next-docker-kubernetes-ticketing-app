@@ -86,3 +86,8 @@ kubectl exec -it {{POD_NAME}} sh
 ```
 tsc --init
 ```
+
+- upon higher version of our library being available:
+```
+npm update @library-of-knowledge/common
+```

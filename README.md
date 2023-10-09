@@ -68,7 +68,15 @@ kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 
 ### commands
 ```
-skaffold dev // start
+// docker build an image
+docker build -t {{IMAGE_TAG_NAME}} .
+// push the image to docker hub
+docker push {{IMAGE_TAG_NAME}}
+```
+
+```
+// project start
+skaffold dev
 ```
 
 - how to create kubectl secret for storing JTW information:

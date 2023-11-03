@@ -29,6 +29,10 @@
 <img width="712" alt="tickets service notes" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d49cb12b-181a-4e67-8f4f-f6e8d5e5131a">
 <img width="739" alt="tickets service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/eef28b7a-2af5-49d5-9934-a979bccbcf2f">
 
+### Class Listener ([npm package](https://www.npmjs.com/package/@library-of-knowledge/common))
+<img width="785" alt="Class Listener" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/c8ced4c4-1712-4158-bc7c-70c48729f7dd">
+<img width="807" alt="Class Listener subclasses" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d2593ec9-4179-4c42-962d-693375ddc5c9">
+
 
 ### Errors
 Common Response Structure

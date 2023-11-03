@@ -30,7 +30,7 @@
 <img width="739" alt="tickets service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/eef28b7a-2af5-49d5-9934-a979bccbcf2f">
 
 ### Class Listener ([npm package](https://www.npmjs.com/package/@library-of-knowledge/common))
-<img width="785" alt="Class Listener" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/c8ced4c4-1712-4158-bc7c-70c48729f7dd">
+<img width="785" alt="Class Listener" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/8fe43664-1221-4f45-8167-b92eeb940d11">
 <img width="807" alt="Class Listener subclasses" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d2593ec9-4179-4c42-962d-693375ddc5c9">
 
 

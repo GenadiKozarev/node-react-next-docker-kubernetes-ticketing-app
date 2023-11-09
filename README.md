@@ -97,6 +97,9 @@ kubectl get services -n ingress-nginx
 // open a shell inside a pod
 kubectl get pods
 kubectl exec -it {{POD_NAME}} sh
+
+// delete a pod
+kubectl delete pod {{POD_NAME}}
 ```
 
 - create TypeScript config file

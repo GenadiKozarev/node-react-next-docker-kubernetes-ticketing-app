@@ -33,6 +33,9 @@
 <img width="775" alt="Class Listener" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/1d853ccb-aada-409c-ae02-4fe6cfeb2310">
 <img width="757" alt="Class Listener subclasses" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/e18088c3-c68d-4367-8dbb-b81286a2d014">
 
+### NATS Client Singleton
+<img width="763" alt="NATS Client Singleton" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/ca774e4d-52a4-4992-9ffe-f7f21d22f214">
+
 ### Errors
 Common Response Structure
 ```

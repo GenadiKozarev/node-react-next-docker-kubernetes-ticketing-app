@@ -4,9 +4,11 @@ import {
     NotAuthorizedError,
     NotFoundError,
     requireAuth,
-    validateRequest
-} from '@library-of-knowledge/common'
+    validateRequest,
+} from '@library-of-knowledge/common';
 import { Ticket } from '../models/ticket';
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -14,13 +16,10 @@ router.put(
     '/api/tickets/:id',
     requireAuth,
     [
-        body('title')
-            .not()
-            .isEmpty()
-            .withMessage('Title is required'),
+        body('title').not().isEmpty().withMessage('Title is required'),
         body('price')
             .isFloat({ gt: 0 })
-            .withMessage('Price must be greater than zero')
+            .withMessage('Price must be greater than zero'),
     ],
     validateRequest,
     async (req: Request, res: Response) => {
@@ -36,10 +35,16 @@ router.put(
 
         ticket.set({
             title: req.body.title,
-            price: req.body.price
+            price: req.body.price,
         });
-
         await ticket.save();
+
+        new TicketUpdatedPublisher(natsWrapper.client).publish({
+            id: ticket.id,
+            title: ticket.title,
+            price: ticket.price,
+            userId: ticket.userId,
+        });
 
         res.send(ticket);
     }

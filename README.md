@@ -29,6 +29,10 @@
 <img width="712" alt="tickets service notes" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d49cb12b-181a-4e67-8f4f-f6e8d5e5131a">
 <img width="739" alt="tickets service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/eef28b7a-2af5-49d5-9934-a979bccbcf2f">
 
+### Orders service
+<img width="973" alt="Orders Service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/9dff874f-2910-4de3-b431-bb7d487b8847">
+<img width="609" alt="Orders Service Setup" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/21d86df8-2569-478f-a07c-1b382fcef7c8">
+
 ### Class Listener ([npm package](https://www.npmjs.com/package/@library-of-knowledge/common))
 <img width="775" alt="Class Listener" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/1d853ccb-aada-409c-ae02-4fe6cfeb2310">
 <img width="757" alt="Class Listener subclasses" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/e18088c3-c68d-4367-8dbb-b81286a2d014">

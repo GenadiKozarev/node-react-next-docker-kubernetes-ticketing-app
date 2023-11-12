@@ -48,7 +48,7 @@ router.post(
         expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOWS_SECONDS);
 
         // Build the order and save it to the database
-        const order  = Order.build({
+        const order = Order.build({
             userId: req.currentUser!.id,
             status: OrderStatus.Created,
             expiresAt: expiration,

@@ -82,6 +82,23 @@ Error from server (InternalError): error when creating "STDIN": Internal error o
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
+- Issue 3:
+```
+When there's a "Connection refused" message in insomnia/postman
+```
+  - Fix 3:
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
+```
+
+- Issue 4:
+```
+Message:secret “jwt-secret” not found
+```
+  - Fix 4:
+```
+kubectl create secret generic jwt-secret --from-literal JWT_KEY=randomkey
+```
 
 ### commands
 ```

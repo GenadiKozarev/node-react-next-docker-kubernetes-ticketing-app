@@ -100,6 +100,19 @@ Message:secret “jwt-secret” not found
 kubectl create secret generic jwt-secret --from-literal JWT_KEY=randomkey
 ```
 
+- Issue 5:
+
+```
+- Error creating: Unauthorized
+ - deployment/orders-depl: Failed to create Pod for Deployment orders-depl: Error creating: Unauthorized
+ - deployment/orders-depl failed. Error: Failed to create Pod for Deployment orders-depl: Error creating: Unauthorized.
+```
+
+  - Fix 5:
+    - Reset Kubernetes Cluster from Docker Desktop
+    - probably would need to create a new `jwt-secret` afterwards
+      - kubectl create secret generic jwt-secret --from-literal JWT_KEY=randomkey
+
 ### commands
 ```
 // docker build an image

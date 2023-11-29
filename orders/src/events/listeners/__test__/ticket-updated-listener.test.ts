@@ -51,3 +51,16 @@ it('acks (acknowledges) the message', async () => {
 
     expect(msg.ack).toHaveBeenCalled();
 });
+
+it('does NOT acknowledge an event with a wrong/skipped/future version number', async () => {
+    const { msg, data, ticket, listener } = await setup();
+
+    // assign a wrong/skipped/future version number
+    data.version = 10;
+
+    try {
+        await listener.onMessage(data, msg);
+    } catch (err) {}
+
+    expect(msg.ack).not.toHaveBeenCalled();
+});

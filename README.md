@@ -25,7 +25,7 @@
 <img width="763" alt="events published by each serviceee" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/cd3e1e96-a599-4c42-84b2-06101069182e">
 <img width="760" alt="events published by each servicee" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/5808c163-9a31-494b-af6c-8e0b9099b277">
 <img width="993" alt="events published by each service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/a504a782-0158-4106-9155-3f0000e7e804">
-
+<img width="992" alt="order_cancelled" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/f886d19b-165e-4b53-9c59-4af7ad0681fb">
 
 ## Notes about the overall design of each service
 <img width="945" alt="overall-design-of-each-service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/28d6de4d-d1e0-4980-b61d-563383a0efa5">

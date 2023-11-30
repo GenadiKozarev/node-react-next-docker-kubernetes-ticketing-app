@@ -3,6 +3,7 @@ import { app } from '../../app';
 import mongoose from 'mongoose';
 // Import the real natsWrapper to test that we are actually being given a mock of the natsWrapper, as per our tickets/src/test/setup.ts. See 'it('publishes an event''
 import { natsWrapper } from '../../nats-wrapper';
+import { Ticket } from '../../models/ticket';
 
 it('returns 404 if the provided id does not exist', async () => {
     const id = new mongoose.Types.ObjectId().toHexString();
@@ -126,3 +127,32 @@ it('publishes an event', async () => {
 
     expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
+
+it('rejects updates if the ticket has been reserved', async () => {
+    // Save the cookie here to be able to imitate we're the same user
+    const cookie = global.signin();
+
+    // Create a ticket and save the response for its id
+    const response = await request(app)
+        .post('/api/tickets')
+        .set('Cookie', cookie)
+        .send({
+            title: 'testTitle',
+            price: 55,
+        });
+
+    // Find the ticket we just created and set an orderId property on it which is what reserves the ticket
+    const ticket = await Ticket.findById(response.body.id);
+    ticket!.set({ orderId: new mongoose.Types.ObjectId().toHexString() });
+    await ticket!.save();
+
+    // Attempt to update the ticket
+    await request(app)
+        .put(`/api/tickets/${response.body.id}`)
+        .set('Cookie', cookie)
+        .send({
+            title: 'new title',
+            price: 100,
+        })
+        .expect(400);
+})

@@ -21,11 +21,25 @@
 
 ## Events
 <img width="867" alt="events" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/5e6a920e-c2bc-4d64-b3ef-7c998ee8038b">
+
+### Events publishes by each Service
 <img width="762" alt="events published by each serviceeee" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/b7365e8d-e8a1-4045-b7a9-6ddb55f5772d">
+
+### ticket:created
 <img width="763" alt="events published by each serviceee" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/cd3e1e96-a599-4c42-84b2-06101069182e">
+
+### ticket:updated
 <img width="760" alt="events published by each servicee" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/5808c163-9a31-494b-af6c-8e0b9099b277">
+
+### order:created
 <img width="993" alt="events published by each service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/a504a782-0158-4106-9155-3f0000e7e804">
+
+### order:cancelled
 <img width="992" alt="order_cancelled" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/f886d19b-165e-4b53-9c59-4af7ad0681fb">
+
+### Expiration Service
+### expiration:complete
+<img width="915" alt="expiration-complete" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/e93b5ce9-9336-496c-a30e-577e8013627a">
 
 ## Notes about the overall design of each service
 <img width="945" alt="overall-design-of-each-service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/28d6de4d-d1e0-4980-b61d-563383a0efa5">

@@ -40,6 +40,7 @@
 ### Expiration Service
 ### expiration:complete
 <img width="915" alt="expiration-complete" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/e93b5ce9-9336-496c-a30e-577e8013627a">
+<img width="641" alt="expiration-complete 2" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/0fd19a48-128c-42a1-b241-c794f9f84768">
 
 ## Notes about the overall design of each service
 <img width="945" alt="overall-design-of-each-service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/28d6de4d-d1e0-4980-b61d-563383a0efa5">

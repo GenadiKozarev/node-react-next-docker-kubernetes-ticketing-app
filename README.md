@@ -128,6 +128,25 @@ kubectl create secret generic jwt-secret --from-literal JWT_KEY=randomkey
     - probably would need to create a new `jwt-secret` afterwards
       - kubectl create secret generic jwt-secret --from-literal JWT_KEY=randomkey
 
+- Issue 6:
+Skaffold using cached layers when building images may cause a dependency package version discrepancy.
+For example, a message like `Module '"@library-of-knowledge/common"' has no exported member 'ExpirationCompleteEvent'.` which is caused from not using the latest version of that module, even after `npm update PACKAGE_NAME`.
+
+- Fix 6:
+skaffold.yaml:
+under each `dockerfile: Dockerfile` of each `image` add once (depending on preference) `noCache: true`
+```
+- image: dockerUsername/expiration
+  context: expiration
+  docker:
+    dockerfile: Dockerfile
+    noCache: true
+  sync:
+    manual:
+      - src: 'src/**/*.ts'
+        dest: .
+```
+
 ### commands
 ```
 // docker build an image

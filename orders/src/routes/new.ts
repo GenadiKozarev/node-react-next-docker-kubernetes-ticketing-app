@@ -15,7 +15,7 @@ import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
-// 15 minutes
+// How long until an order expires: 15 minutes
 const EXPIRATION_WINDOWS_SECONDS = 15 * 60;
 
 router.post(

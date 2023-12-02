@@ -82,7 +82,7 @@ Common Response Structure
 ```
 getting imageID for {{DOCKER_IMAGE}}: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 ```
-- Fix 1:
+  - Fix 1:
 ```
 DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock skaffold dev
 ```
@@ -92,15 +92,13 @@ DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock skaffold dev
 Error from server (InternalError): error when creating "STDIN": Internal error occurred: failed calling webhook "validate.nginx.ingress.kubernetes.io": failed to call webhook: Post "https://ingress-nginx-controller-admission.ingress-nginx.svc:443/networking/v1/ingresses?timeout=10s": dial tcp 10.110.162.108:443: connect: connection refused
 ```
   - Fix 2:
-    - run this command before `skaffold`
+    - run before `skaffold`:
 ```
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
 - Issue 3:
-```
-When there's a "Connection refused" message in insomnia/postman
-```
+When there's a "Connection refused" message in insomnia/postman.
   - Fix 3:
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
@@ -116,13 +114,11 @@ kubectl create secret generic jwt-secret --from-literal JWT_KEY=randomkey
 ```
 
 - Issue 5:
-
 ```
 - Error creating: Unauthorized
  - deployment/orders-depl: Failed to create Pod for Deployment orders-depl: Error creating: Unauthorized
  - deployment/orders-depl failed. Error: Failed to create Pod for Deployment orders-depl: Error creating: Unauthorized.
 ```
-
   - Fix 5:
     - Reset Kubernetes Cluster from Docker Desktop
     - probably would need to create a new `jwt-secret` afterwards
@@ -132,9 +128,9 @@ kubectl create secret generic jwt-secret --from-literal JWT_KEY=randomkey
 Skaffold using cached layers when building images may cause a dependency package version discrepancy.
 For example, a message like `Module '"@library-of-knowledge/common"' has no exported member 'ExpirationCompleteEvent'.` which is caused from not using the latest version of that module, even after `npm update PACKAGE_NAME`.
 
-- Fix 6:
-skaffold.yaml:
-under each `dockerfile: Dockerfile` of each `image` add once (depending on preference) `noCache: true`
+  - Fix 6:
+    - skaffold.yaml:
+    - under each `dockerfile: Dockerfile` of each `image` add once (depending on preference) `noCache: true`
 ```
 - image: dockerUsername/expiration
   context: expiration

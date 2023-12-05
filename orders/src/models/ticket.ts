@@ -2,20 +2,22 @@ import mongoose from 'mongoose';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 import { Order, OrderStatus } from './order';
 
+// list of properties required to build a ticket
 interface TicketAttrs {
     id: string;
     title: string;
     price: number;
 }
-
+// list of properties that a ticket has
 export interface TicketDoc extends mongoose.Document {
     title: string;
     price: number;
     version: number;
     isReserved(): Promise<boolean>;
 }
-
+// list of properties the model itself contains
 interface TicketModel extends mongoose.Model<TicketDoc> {
+    // takes an argument of type OrderAttrs and returns something of type OrderDoc
     build(attrs: TicketAttrs): TicketDoc;
     // Function to find by id and a previous version
     findByEvent(event: {

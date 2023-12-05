@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
-// An interface that describes the properties that are required to create a new Ticket
+// list of properties required to build a ticket
 interface TicketAttrs {
     title: string;
     price: number;
     userId: string;
 }
 
-// An interface that describes the properties that a Ticket Document has
+// list of properties that a ticket has
 interface TicketDoc extends mongoose.Document {
     title: string;
     price: number;
@@ -17,8 +17,9 @@ interface TicketDoc extends mongoose.Document {
     orderId?: string;
 }
 
-// An interface that describes the properties that a Ticket Model has
+// list of properties the model itself contains
 interface TicketModel extends mongoose.Model<TicketDoc> {
+    // takes an argument of type OrderAttrs and returns something of type OrderDoc
     build(attrs: TicketAttrs): TicketDoc;
 }
 

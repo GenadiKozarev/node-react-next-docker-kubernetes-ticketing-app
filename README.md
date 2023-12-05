@@ -175,6 +175,10 @@ kubectl exec -it {{POD_NAME}} sh
 
 // delete a pod
 kubectl delete pod {{POD_NAME}}
+
+// how to manually restart a pod: use a pod's name to delete it which will make skaffold start it anew
+kubectl get pods
+kubectl delete pod {{POD_NAME}}
 ```
 
 - create TypeScript config file

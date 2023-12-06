@@ -12,7 +12,7 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: OrderCreatedEvent['data'], msg: Message) {
-        // expiration time minus the current time, in milliseconds
+        // EXPIRATION_WINDOWS_SECONDS minus the current time, in milliseconds
         const delay = new Date(data.expiresAt).getTime() - new Date().getTime();
 
         // add a job to the queue

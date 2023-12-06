@@ -5,7 +5,7 @@ import { app } from '../app';
 import jwt from 'jsonwebtoken';
 
 declare global {
-    var signin: () => string[];
+    var signin: (id?: string) => string[];
 }
 
 // Whenever there's an attempt to import the real nats-wrapper, we will actually import the mock version of it in all tests.
@@ -40,10 +40,11 @@ afterAll(async () => {
     await mongoose.connection.close();
 });
 
-global.signin = () => {
+global.signin = (id?: string) => {
     // Build JWT payload { id, email }
     const payload = {
-        id: new mongoose.Types.ObjectId().toHexString(),
+        // if we provide the optional 'id' argument, use it, otherwise generate a new one
+        id: id || new mongoose.Types.ObjectId().toHexString(),
         email: 'bark@bark.com',
     };
     // Create the JWT

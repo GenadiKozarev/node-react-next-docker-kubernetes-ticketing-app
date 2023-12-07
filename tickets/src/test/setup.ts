@@ -8,7 +8,7 @@ declare global {
     var signin: () => string[];
 }
 
-// Whenever there's an attempt to import the real nats-wrapper, we will actually import the mock version of it in all tests.
+// redirect jest to use this mock instead of the original file
 jest.mock('../nats-wrapper');
 
 let mongo: any;

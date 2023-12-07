@@ -43,7 +43,7 @@ router.post(
             source: token,
         });
 
-        res.send({ success: true });
+        res.status(201).send({ success: true });
         // TODO:
         // ensure the payment amount matches the amount due for the order
     }

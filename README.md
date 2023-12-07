@@ -162,7 +162,7 @@ skaffold dev
 
 - how to create kubectl secret for storing JTW information:
 ```
-kubectl create secret generic {{NAME_OF_SECRET}} --from-literal={{KEY}}={{VALUE}}
+kubectl create secret generic {{NAME_OF_SECRET}} --from-literal {{KEY}}={{VALUE}}
 // example: create a secret and after that try running `skaffold delete` and then `skaffold dev` again.
 kubectl create secret generic jwt-secret --from-literal JWT_KEY=asdf
 ```

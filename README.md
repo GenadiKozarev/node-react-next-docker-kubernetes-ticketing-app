@@ -22,8 +22,8 @@
 ## Events
 <img width="867" alt="events" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/5e6a920e-c2bc-4d64-b3ef-7c998ee8038b">
 
-### Events publishes by each Service
-<img width="762" alt="events published by each serviceeee" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/b7365e8d-e8a1-4045-b7a9-6ddb55f5772d">
+### Events published by each Service
+<img width="985" alt="Events publishes by each Service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d764af72-ae33-4d8c-a447-31a18666e428">
 
 ### ticket:created
 <img width="763" alt="events published by each serviceee" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/cd3e1e96-a599-4c42-84b2-06101069182e">

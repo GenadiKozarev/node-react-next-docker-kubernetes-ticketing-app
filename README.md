@@ -55,8 +55,8 @@
 <img width="835" alt="orders routes" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/c43ca474-9d56-41b9-97c8-ef6fcea3723c">
 
 ### Payments service
-### charge:created
-<img width="422" alt="payments service" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/3996b0fa-86d0-4a7e-92c8-0f43790f0c38">
+### payment:created
+<img width="485" alt="payment-created" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/ef7b3d70-9872-46c5-8fb2-84c635192bb1">
 
 ### Class Listener ([npm package](https://www.npmjs.com/package/@library-of-knowledge/common))
 <img width="775" alt="Class Listener" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/1d853ccb-aada-409c-ae02-4fe6cfeb2310">

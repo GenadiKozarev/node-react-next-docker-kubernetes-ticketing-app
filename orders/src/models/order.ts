@@ -22,7 +22,7 @@ interface OrderDoc extends mongoose.Document {
 }
 // list of properties the model itself contains
 interface OrderModel extends mongoose.Model<OrderDoc> {
-    // takes an argument of type OrderAttrs and returns something of type OrderDoc
+    // accepts an argument of type OrderAttrs and returns something of type OrderDoc
     build(attrs: OrderAttrs): OrderDoc;
 }
 

@@ -1,16 +1,18 @@
 import mongoose from 'mongoose';
 
+// list of properties required to build a payment
 interface PaymentAttrs {
     orderId: string;
     stripeId: string;
 }
-
+// list of properties that a payment has
 interface PaymentDoc extends mongoose.Document {
     orderId: string;
     stripeId: string;
 }
-
+// list of properties the model itself contains
 interface PaymentModel extends mongoose.Model<PaymentDoc> {
+    // accepts an argument of type OrderAttrs and returns the OrderDoc object properties
     build(attrs: PaymentAttrs): PaymentDoc;
 }
 

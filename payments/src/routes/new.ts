@@ -10,6 +10,7 @@ import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { stripe } from '../stripe';
 import { Order } from '../models/order';
+import { Payment } from '../models/payment';
 
 const router = express.Router();
 
@@ -36,12 +37,18 @@ router.post(
         }
 
         // https://stripe.com/docs/api/charges/create
-        await stripe.charges.create({
+        const charge = await stripe.charges.create({
             currency: 'usd',
             // stripe uses the smallest currency unit (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency)
             amount: order.price * 100,
             source: token,
         });
+
+        const payment = Payment.build({
+            orderId,
+            stripeId: charge.id,
+        });
+        await payment.save();
 
         res.status(201).send({ success: true });
         // TODO:

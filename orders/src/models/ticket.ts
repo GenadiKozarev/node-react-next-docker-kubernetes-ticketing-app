@@ -17,7 +17,7 @@ export interface TicketDoc extends mongoose.Document {
 }
 // list of properties the model itself contains
 interface TicketModel extends mongoose.Model<TicketDoc> {
-    // takes an argument of type OrderAttrs and returns something of type OrderDoc
+    // accepts an argument of type OrderAttrs and returns something of type OrderDoc
     build(attrs: TicketAttrs): TicketDoc;
     // Function to find by id and a previous version
     findByEvent(event: {

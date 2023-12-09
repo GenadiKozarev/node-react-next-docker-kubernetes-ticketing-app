@@ -194,3 +194,11 @@ tsc --init
 ```
 npm update @library-of-knowledge/common
 ```
+
+## Frontend notes
+### routes
+<img width="933" alt="routes" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/dc99fa27-0d8f-4f0c-9138-532081bb9f9d">
+
+### AppComponent (rendering the child components)
+<img width="881" alt="appComponent" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d1469613-f010-4243-bf66-f5cf1d7186a8">
+

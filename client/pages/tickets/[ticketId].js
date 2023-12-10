@@ -30,7 +30,7 @@ TicketShow.getInitialProps = async (context, client) => {
     // whatever the name of this file inside the square brackets, is part of the query
     const { ticketId } = context.query;
     const { data } = await client.get(`/api/tickets/${ticketId}`);
-    // the returned ticket will be merged to the props of const TicketShow
+    // the returned ticket will be merged to the props of 'TicketShow' => it can be passed in as an argument
     return { ticket: data };
 };
 

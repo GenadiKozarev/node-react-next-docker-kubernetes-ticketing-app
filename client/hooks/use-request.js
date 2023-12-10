@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-const useRequest = ({ method, url, body, onSuccess }) => {
+export default ({ method, url, body, onSuccess }) => {
     const [errors, setErrors] = useState(null);
 
-    const handleRequest = async () => {
+    const doRequest = async () => {
         try {
             setErrors(null);
             const response = await axios[method](url, body);
@@ -28,7 +28,5 @@ const useRequest = ({ method, url, body, onSuccess }) => {
         }
     };
 
-    return { handleRequest, errors };
+    return { doRequest, errors };
 };
-
-export default useRequest;

@@ -5,7 +5,7 @@ import useRequest from '../../hooks/use-request';
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { handleRequest, errors } = useRequest({
+    const { doRequest, errors } = useRequest({
         method: 'post',
         url: '/api/users/signup',
         body: { email, password },
@@ -15,7 +15,7 @@ const SignUp = () => {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        await handleRequest();
+        await doRequest();
     };
 
     return (

@@ -36,6 +36,7 @@ build:
       context: orders
       docker:
         dockerfile: Dockerfile
+        noCache: true
       sync:
         manual:
           - src: 'src/**/*.ts'
@@ -52,6 +53,7 @@ build:
       context: payments
       docker:
         dockerfile: Dockerfile
+        noCache: true
       sync:
         manual:
           - src: 'src/**/*.ts'

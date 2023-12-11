@@ -1,9 +1,12 @@
 import Link from 'next/link';
 
 const Header = ({ currentUser }) => {
+    // if a user is logged in or not, add a label and link
     const links = [
         !currentUser && { label: 'Sign Up', href: '/auth/signup' },
         !currentUser && { label: 'Sign In', href: '/auth/signin' },
+        currentUser && { label: 'Sell Tickets', href: '/tickets/new' },
+        currentUser && { label: 'My Orders', href: '/orders' },
         currentUser && { label: 'Sign Out', href: '/auth/signout' },
     ]
         // filter out any false entries

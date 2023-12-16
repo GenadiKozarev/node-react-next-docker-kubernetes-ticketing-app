@@ -1,0 +1,13 @@
+name: tests-orders
+
+on:
+  pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # take all the code out of this project
+      - uses: actions/checkout@v2
+      # change into a directory, install dependencies and run the 'test:ci' script
+      - run: cd orders && npm install && npm run test:ci

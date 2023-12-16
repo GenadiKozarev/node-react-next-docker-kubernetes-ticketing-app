@@ -1,7 +1,9 @@
 name: tests-payments
-
+# on pull request when any files in the specified directory has been changed
 on:
-  pull_request
+  pull_request:
+    paths:
+      - 'payments/**'
 
 jobs:
   build:

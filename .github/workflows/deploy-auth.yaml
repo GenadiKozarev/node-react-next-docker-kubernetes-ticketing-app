@@ -1,0 +1,22 @@
+name: deploy-auth
+# closing or merging a pull request counts as a 'push' directly to the main branch
+# => this workflow will run upon merging into the main branch if there is a change in the specified directory
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'auth/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    steps:
+      # check out all of the code inside of this repo
+      - uses: actions/checkout@v2
+      - run: cd auth && docker build -t $DOCKER_USERNAME/auth .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run: docker push $DOCKER_USERNAME/auth

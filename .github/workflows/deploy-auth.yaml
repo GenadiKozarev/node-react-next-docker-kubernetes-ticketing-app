@@ -11,12 +11,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     steps:
       # check out all of the code inside of this repo
       - uses: actions/checkout@v2
-      - run: cd auth && docker build -t $DOCKER_USERNAME/auth .
-      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - run: docker push $DOCKER_USERNAME/auth
+      # the 'docker' command is available because it is part of ubuntu's(above) toolset.
+      # build image
+      - run: cd auth && docker build -t ${{ secrets.DOCKER_USERNAME }}/auth .
+      # log in to docker
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      # push to docker hub
+      - run: docker push ${{ secrets.DOCKER_USERNAME }}/auth
+      # Authenticate and install doctl.
+      # DigitalOcean's shortcut for installing doctl into a running github container automatically
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      # Provide connection credentials to get connection to a specific DigitalOcean's kubernetes cluster
+      - run: doctl kubernetes cluster kubeconfig save ${{ secrets.DIGITALOCEAN_KUBERNETES_CLUSTER_NAME }}
+      # tell the deployment to update itself and use the latest image pushed(above) to docker hub
+      - run: kubectl rollout restart deployment auth-depl

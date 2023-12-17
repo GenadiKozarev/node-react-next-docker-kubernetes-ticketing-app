@@ -1,6 +1,6 @@
 # Ticketing App
 
-- Users can list a ticket for an event (concert, sports) for sale
+- Users can list a ticket for an event (e.g. music concert, football match, art festival etc.) for sale
 - Other users can purchase that ticket
 - Any user can list tickets for sale and purchase tickets
 - When a user attempts to purchase a ticket, the ticket is "locked" for 15 minutes. The user has 15 minutes to enter their payment info
@@ -75,10 +75,11 @@ Common Response Structure
 }
 ```
 
-#### dependencies notes
+#### Notes for tools and package dependencies
 - `ts-node-dev` - tool to execute the project in a development environment
 - `mongodb-memory-server` - copy of mongodb will be running in-memory in order to test multiple databases at the same time, hence be able to run tests for different services concurrently on the same machine
 - NATS Streaming Server - used to share events across all the different services in the app (commandline options ref: https://hub.docker.com/_/nats-streaming)
+- DigitalOcean command line interface: https://docs.digitalocean.com/reference/doctl/how-to/install/
 
 
 ### knows issues
@@ -183,6 +184,10 @@ kubectl delete pod {{POD_NAME}}
 // how to manually restart a pod: use a pod's name to delete it which will make skaffold start it anew
 kubectl get pods
 kubectl delete pod {{POD_NAME}}
+
+// kubernetes switch context (commands below or use docker desktop's tray icon)
+kubectl config view
+kubectl config use-context {{CONTEXT_NAME}}
 ```
 
 - create TypeScript config file

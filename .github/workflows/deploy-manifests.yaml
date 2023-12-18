@@ -1,0 +1,25 @@
+name: deploy-manifests
+# closing or merging a pull request counts as a 'push' directly to the main branch
+# => this workflow will run upon merging into the main branch if there is a change in the specified directory
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'infra/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # check out all of the code inside of this repo
+      - uses: actions/checkout@v2
+      # authenticate and install doctl.
+      # DigitalOcean's shortcut for installing doctl into a running github container automatically
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      # provide connection credentials to get connection to a specific DigitalOcean's kubernetes cluster
+      - run: doctl kubernetes cluster kubeconfig save ${{ secrets.DIGITALOCEAN_KUBERNETES_CLUSTER_NAME }}
+      # apply all config files to the cluster
+      - run: kubectl apply -f infra/k8s

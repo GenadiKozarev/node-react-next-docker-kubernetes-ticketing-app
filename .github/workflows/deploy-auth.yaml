@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # check out all of the code inside of this repo
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # the 'docker' command is available because it is part of ubuntu's(above) toolset.
       # build image
       - run: cd auth && docker build -t ${{ secrets.DOCKER_USERNAME }}/auth .

@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # check out all of the code inside of this repo
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # authenticate and install doctl.
       # DigitalOcean's shortcut for installing doctl into a running github container automatically
       - uses: digitalocean/action-doctl@v2

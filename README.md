@@ -81,6 +81,74 @@ Common Response Structure
 - NATS Streaming Server - used to share events across all the different services in the app (commandline options ref: https://hub.docker.com/_/nats-streaming)
 - DigitalOcean command line interface: https://docs.digitalocean.com/reference/doctl/how-to/install/
 
+### how to deploy and start repo
+1. Manually create `jwt-secret` and `stripe-secret`
+2. Ensure kubernetes is pointing to the right context
+3. Run the right command for deployment, in my case is Digital Ocean
+```
+// https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/do/deploy.yaml
+```
+
+
+### commands
+```
+// docker build an image
+docker build -t {{IMAGE_TAG_NAME}} .
+// push the image to docker hub
+docker push {{IMAGE_TAG_NAME}}
+```
+
+```
+// project start
+skaffold dev
+```
+
+- how to create kubectl secret for storing JTW information:
+```
+kubectl create secret generic {{NAME_OF_SECRET}} --from-literal {{KEY}}={{VALUE}}
+// example: create a secret and after that try running `skaffold delete` and then `skaffold dev` again.
+kubectl create secret generic jwt-secret --from-literal JWT_KEY=asdf
+```
+
+- kubectl commands:
+```
+kubectl get secrets
+kubectl get namespace
+kubectl get services -n ingress-nginx
+
+// open a shell inside a pod
+kubectl get pods
+kubectl exec -it {{POD_NAME}} sh
+
+// delete a pod
+kubectl delete pod {{POD_NAME}}
+
+// how to manually restart a pod: use a pod's name to delete it which will make skaffold start it anew
+kubectl get pods
+kubectl delete pod {{POD_NAME}}
+
+// kubernetes switch context (commands below or use docker desktop's tray icon)
+kubectl config view
+kubectl config use-context {{CONTEXT_NAME}}
+```
+
+- create TypeScript config file
+```
+tsc --init
+```
+
+- upon higher version of our library being available:
+```
+npm update @library-of-knowledge/common
+```
+
+## Frontend notes
+### routes
+<img width="933" alt="routes" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/dc99fa27-0d8f-4f0c-9138-532081bb9f9d">
+
+### AppComponent (rendering the child components)
+<img width="881" alt="appComponent" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d1469613-f010-4243-bf66-f5cf1d7186a8">
 
 ### knows issues
 - Issue 1:
@@ -147,63 +215,3 @@ For example, a message like `Module '"@library-of-knowledge/common"' has no expo
       - src: 'src/**/*.ts'
         dest: .
 ```
-
-### commands
-```
-// docker build an image
-docker build -t {{IMAGE_TAG_NAME}} .
-// push the image to docker hub
-docker push {{IMAGE_TAG_NAME}}
-```
-
-```
-// project start
-skaffold dev
-```
-
-- how to create kubectl secret for storing JTW information:
-```
-kubectl create secret generic {{NAME_OF_SECRET}} --from-literal {{KEY}}={{VALUE}}
-// example: create a secret and after that try running `skaffold delete` and then `skaffold dev` again.
-kubectl create secret generic jwt-secret --from-literal JWT_KEY=asdf
-```
-
-- kubectl commands:
-```
-kubectl get secrets
-kubectl get namespace
-kubectl get services -n ingress-nginx
-
-// open a shell inside a pod
-kubectl get pods
-kubectl exec -it {{POD_NAME}} sh
-
-// delete a pod
-kubectl delete pod {{POD_NAME}}
-
-// how to manually restart a pod: use a pod's name to delete it which will make skaffold start it anew
-kubectl get pods
-kubectl delete pod {{POD_NAME}}
-
-// kubernetes switch context (commands below or use docker desktop's tray icon)
-kubectl config view
-kubectl config use-context {{CONTEXT_NAME}}
-```
-
-- create TypeScript config file
-```
-tsc --init
-```
-
-- upon higher version of our library being available:
-```
-npm update @library-of-knowledge/common
-```
-
-## Frontend notes
-### routes
-<img width="933" alt="routes" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/dc99fa27-0d8f-4f0c-9138-532081bb9f9d">
-
-### AppComponent (rendering the child components)
-<img width="881" alt="appComponent" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d1469613-f010-4243-bf66-f5cf1d7186a8">
-

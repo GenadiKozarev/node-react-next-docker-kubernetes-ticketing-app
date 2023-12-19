@@ -18,7 +18,8 @@ jobs:
       # build image
       - run: cd auth && docker build -t dockerdev9154/auth .
       # log in to docker
-      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      # double quotes required for values containing special characters
+      - run: docker login -u $DOCKER_USERNAME -p "$DOCKER_PASSWORD"
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

@@ -16,14 +16,14 @@ jobs:
       - uses: actions/checkout@v4
       # the 'docker' command is available because it is part of ubuntu's(above) toolset.
       # build image
-      - run: cd auth && docker build -t ${{ secrets.DOCKER_USERNAME }}/auth .
+      - run: cd auth && docker build -t dockerdev9154/auth .
       # log in to docker
-      - run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       # push to docker hub
-      - run: docker push ${{ secrets.DOCKER_USERNAME }}/auth
+      - run: docker push dockerdev9154/auth
       # Authenticate and install doctl.
       # DigitalOcean's shortcut for installing doctl into a running github container automatically
       - uses: digitalocean/action-doctl@v2

@@ -82,9 +82,63 @@ Common Response Structure
 - DigitalOcean command line interface: https://docs.digitalocean.com/reference/doctl/how-to/install/
 
 ### how to deploy and start repo
+Prerequisites:
+- Docker Desktop
+- Kubernetes
+- Skaffold
+- Ingress Nginx
+- Digital Ocean account
+- Digital Ocean command line interface
+- Update the `baseURL` in Client service's build-client file:
+  - In api/build-client.js, change the `baseURL` to your purchased domain:
+- Disable HTTPS Checking
+  - All services are configured to only use cookies when the user is on an HTTPS connection. This will cause auth to fail during the initial deployment of the app. To disable the HTTPS checking, go to the `app.ts file in the `auth`, `orders`, `tickets`, and `payments` services and, at the `cookieSession` middleware, change to the following:
+  ```
+    cookieSession({
+    signed: false,
+    secure: false,
+  })
+  ```
+- Add Load Balancer
+  - There is currently a bug with `ingress-nginx on DigitalOcean. You can read more about this bug [here](https://github.com/digitalocean/digitalocean-cloud-controller-manager/blob/master/docs/controllers/services/examples/README.md#accessing-pods-over-a-managed-load-balancer-from-inside-the-cluster). To fix it, add the following to the bottom of your `ingress-srv.yaml` manifest. Also, update the URL on this line in the annotations to the domain name you're using: `service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.ticketing-app.fun'`
+  ```
+  ---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
+      service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.ticketing-app-prod.xyz'
+    labels:
+      helm.sh/chart: ingress-nginx-2.0.3
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/version: 0.32.0
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/component: controller
+    name: ingress-nginx-controller
+    namespace: ingress-nginx
+  spec:
+    type: LoadBalancer
+    externalTrafficPolicy: Local
+    ports:
+      - name: http
+        port: 80
+        protocol: TCP
+        targetPort: http
+      - name: https
+        port: 443
+        protocol: TCP
+        targetPort: https
+    selector:
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/component: controller
+  ```
+
 1. Manually create `jwt-secret` and `stripe-secret`
-2. Ensure kubernetes is pointing to the right context
-3. Run the right command for deployment, in my case is Digital Ocean
+2. Ensure kubernetes is pointing to the right context (via Docker Desktop's tray icon)
+3. Run the following command for deployment, in my case is Digital Ocean
 ```
 // https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/do/deploy.yaml
@@ -117,6 +171,7 @@ kubectl get secrets
 kubectl get namespace
 kubectl get services -n ingress-nginx
 kubectl get logs {{POD_NAME}}
+kubectl describe pod {{POD_NAME}} // debugging
 
 // open a shell inside a pod
 kubectl get pods

@@ -18,13 +18,12 @@ app.set('trust proxy', true);
 app.use(json());
 app.use(
     cookieSession({
-        // Disable encryption because the JWT is already encrypted
+        // // Disable encryption because the JWT is already encrypted
+        // signed: false,
+        // // Cookies will only be used if the user is visiting via https connection and we're not in a test environment
+        // secure: process.env.NODE_ENV !== 'test',
         signed: false,
-        /*
-        Cookies will only be used if the user is visiting via https connection
-        and we're not in a test environment
-        */
-        secure: process.env.NODE_ENV !== 'test',
+        secure: false,
     })
 );
 

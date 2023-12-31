@@ -7,7 +7,7 @@ deploy:
       - ./infra/k8s-dev/*
 build:
   local:
-    push: false
+    push: true
   artifacts:
     - image: dockerdev9154/auth
       context: auth

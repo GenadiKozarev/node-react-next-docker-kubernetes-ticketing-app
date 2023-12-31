@@ -116,6 +116,7 @@ kubectl create secret generic jwt-secret --from-literal JWT_KEY=asdf
 kubectl get secrets
 kubectl get namespace
 kubectl get services -n ingress-nginx
+kubectl get logs {{POD_NAME}}
 
 // open a shell inside a pod
 kubectl get pods
@@ -138,7 +139,7 @@ kubectl config use-context {{CONTEXT_NAME}}
 tsc --init
 ```
 
-- upon higher version of our library being available:
+- when a new version of our library is available:
 ```
 npm update @library-of-knowledge/common
 ```
@@ -214,4 +215,20 @@ For example, a message like `Module '"@library-of-knowledge/common"' has no expo
     manual:
       - src: 'src/**/*.ts'
         dest: .
+```
+
+- Issue 7:
+Image can't be pulled. Example:
+```
+- deployment/auth-depl: container auth is waiting to start: {{IMAGE_NAME}} can't be pulled
+    - pod/auth-depl-654c594fd9-r2mpw: container auth is waiting to start: {{IMAGE_NAME}} can't be pulled
+ - deployment/auth-depl failed. Error: container auth is waiting to start: {{IMAGE_NAME}} can't be pulled.
+```
+
+  - Fix 7:
+    - update `skaffold.yaml``:
+```
+build:
+  local:
+    push: true
 ```

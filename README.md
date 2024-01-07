@@ -80,6 +80,7 @@ Common Response Structure
 - `mongodb-memory-server` - copy of mongodb will be running in-memory in order to test multiple databases at the same time, hence be able to run tests for different services concurrently on the same machine
 - NATS Streaming Server - used to share events across all the different services in the app (commandline options ref: https://hub.docker.com/_/nats-streaming)
 - DigitalOcean command line interface: https://docs.digitalocean.com/reference/doctl/how-to/install/
+  - `doctl auth init -t {{TOKEN_FROM_DIGITAL_OCEAN_API}}` - to authenticate
 
 ### how to deploy and start repo
 Prerequisites:

@@ -1,5 +1,7 @@
 # Ticketing App
 
+eCommerce app using Microservices built with Node, React, Docker and Kubernetes
+
 - Users can list a ticket for an event (e.g. music concert, football match, art festival etc.) for sale
 - Other users can purchase that ticket
 - Any user can list tickets for sale and purchase tickets

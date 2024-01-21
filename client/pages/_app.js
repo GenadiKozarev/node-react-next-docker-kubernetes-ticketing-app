@@ -5,8 +5,13 @@ import Header from '../components/header';
 const AppComponent = ({ Component, pageProps, currentUser }) => {
     return (
         <div>
+            <style jsx global>{`
+                body {
+                    font-family: Futura, sans-serif;
+                }
+            `}</style>
             <Header currentUser={currentUser} />
-            <div className='container'>
+            <div className='container w-50'>
                 <Component currentUser={currentUser} {...pageProps} />
             </div>
         </div>

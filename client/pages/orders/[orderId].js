@@ -34,7 +34,7 @@ const OrderShow = ({ order, currentUser }) => {
     }
 
     return (
-        <div>
+        <div className='text-center mt-5'>
             Time left to pay: {timeLeft} seconds  
             <StripeCheckout
                 token={({ id }) => doRequest({ token: id })}
@@ -42,6 +42,7 @@ const OrderShow = ({ order, currentUser }) => {
                 // the amount to be paid, convert from cents to dollars
                 amount={order.ticket.price * 100}
                 email={currentUser.email}
+                className='ms-3'
             />
             {errors}
         </div>

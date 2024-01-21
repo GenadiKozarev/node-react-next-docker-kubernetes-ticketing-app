@@ -32,24 +32,24 @@ const NewTicket = () => {
     };
 
     return (
-        <div>
-            <h1>Create a Ticket</h1>
-            <form onSubmit={onSubmit}>
+        <div className='mt-5'>
+            <h2 className='text-center text-primary'>Create a Ticket</h2>
+            <form onSubmit={onSubmit} className='mt-3 w-50 mx-auto d-block text-primary'>
                 <div className='form-group'>
                     <label>Title</label>
                     <input
                         value={title}
                         onChange={e => setTitle(e.target.value)}
-                        className='form-control'
+                        className='form-control text-primary mt-2'
                     />
                 </div>
-                <div className='form-group'>
+                <div className='form-group mt-3'>
                     <label>Price</label>
                     <input
                         value={price}
                         onChange={e => setPrice(e.target.value)}
                         onBlur={onBlur}
-                        className='form-control'
+                        className='form-control text-primary mt-2'
                     />
                 </div>
                 {errors}

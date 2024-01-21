@@ -19,27 +19,27 @@ const SignUp = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>Sign Up</h1>
-            <div className='form-group'>
+        <form onSubmit={handleSubmit} className='mt-5 w-50 mx-auto d-block text-primary'>
+            <h2 className='text-center text-primary'>Sign Up</h2>
+            <div className='form-group mt-5'>
                 <label>Email Address</label>
                 <input
                     value={email}
                     onChange={e => setEmail(e.target.value)}
-                    className='form-control'
+                    className='form-control text-primary mt-2'
                 />
             </div>
-            <div className='form-group'>
+            <div className='form-group mt-3'>
                 <label>Password</label>
                 <input
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     type='password'
-                    className='form-control'
+                    className='form-control text-primary mt-2'
                 />
             </div>
             {errors}
-            <button className='btn btn-primary'>Sign Up</button>
+            <button className='btn btn-primary mt-3'>Sign Up</button>
         </form>
     );
 };

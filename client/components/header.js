@@ -14,7 +14,7 @@ const Header = ({ currentUser }) => {
         .map(({ label, href }) => {
             return (
                 <li key={href} className='nav-item'>
-                    <Link href={href} className='nav-link'>
+                    <Link href={href} className='nav-link mx-2'>
                         {label}
                     </Link>
                 </li>
@@ -22,8 +22,8 @@ const Header = ({ currentUser }) => {
         });
 
     return (
-        <nav className='navbar navbar-light bg-light'>
-            <Link className='navbar-brand' href='/'>
+        <nav className='navbar bg-warning'>
+            <Link className='navbar-brand text-primary ms-3' href='/'>
                 TicketingApp
             </Link>
 

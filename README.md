@@ -84,16 +84,40 @@ Common Response Structure
 - DigitalOcean command line interface: https://docs.digitalocean.com/reference/doctl/how-to/install/
   - `doctl auth init -t {{TOKEN_FROM_DIGITAL_OCEAN_API}}` - to authenticate
 
-### how to deploy and start repo
-Prerequisites:
+## Prerequisites:
 - Docker Desktop
 - Kubernetes
 - Skaffold
 - Ingress Nginx
+
+### start local dev environment
+- In `api/build-client.js`` update the `baseURL` in Client service's build-client file to:
+```
+baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+```
+- update all `cookieSession` parameters to:
+```
+app.use(
+    cookieSession({
+        // Disable encryption because the JWT is already encrypted
+        signed: false,
+        // Cookies will only be used if the user is visiting via https connection and we're not in a test environment
+        secure: process.env.NODE_ENV !== 'test',
+    })
+);
+```
+- Manually create `jwt-secret` and `stripe-secret`
+- Ensure kubernetes is pointing to the right context (via Docker Desktop's tray icon)
+- run:
+```
+DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock skaffold dev
+```
+
+### how to deploy and start production environment
 - Digital Ocean account
 - Digital Ocean command line interface
 - Update the `baseURL` in Client service's build-client file:
-  - In api/build-client.js, change the `baseURL` to your purchased domain:
+  - In api/build-client.js, change the `baseURL` to your purchased domain
 - Disable HTTPS Checking
   - All services are configured to only use cookies when the user is on an HTTPS connection. This will cause auth to fail during the initial deployment of the app. To disable the HTTPS checking, go to the `app.ts file in the `auth`, `orders`, `tickets`, and `payments` services and, at the `cookieSession` middleware, change to the following:
   ```

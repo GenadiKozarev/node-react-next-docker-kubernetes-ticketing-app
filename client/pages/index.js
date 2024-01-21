@@ -10,6 +10,7 @@ const LandingPage = ({ currentUser, tickets }) => {
                     <Link
                         href='/tickets/[ticketId]'
                         as={`/tickets/${ticket.id}`}
+                        className='btn btn-warning'
                     >
                         view
                     </Link>
@@ -18,17 +19,17 @@ const LandingPage = ({ currentUser, tickets }) => {
         );
     });
     return (
-        <div>
-            <h2>Tickets</h2>
-            <table className='table'>
+        <div className='mt-5'>
+            <h2 className='text-primary text-center mb-5'>Tickets</h2>
+            <table className='table table-hover'>
                 <thead>
-                    <tr>
+                    <tr className='table-primary'>
                         <th>Title</th>
                         <th>Price</th>
                         <th>Link</th>
                     </tr>
                 </thead>
-                <tbody>{ticketList}</tbody>
+                <tbody className='table-warning align-middle'>{ticketList}</tbody>
             </table>
         </div>
     );

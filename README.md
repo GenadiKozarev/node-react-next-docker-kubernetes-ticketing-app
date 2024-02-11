@@ -10,6 +10,11 @@ eCommerce app using Microservices built with Node, React, Docker and Kubernetes
 
 Live: www.ticketing-app.fun
 
+Demo:
+
+![ticketing-app-demo](https://github.com/GenadiKozarev/ticketing-app/assets/84446009/22ec00b3-9d0f-4704-aa7e-c24f433edf89)
+
+
 ## Tables
 <img width="800" alt="Tables" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/80763404-f992-4b57-be50-fecd73e159d4">
 

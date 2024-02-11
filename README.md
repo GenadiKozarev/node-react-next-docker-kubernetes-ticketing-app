@@ -97,7 +97,7 @@ Common Response Structure
 - Ingress Nginx
 
 ### start local dev environment
-- In `api/build-client.js`` update the `baseURL` in Client service's build-client file to:
+- In `api/build-client.js` update the `baseURL` in Client service's build-client file to:
 ```
 baseURL: 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
 ```
@@ -133,7 +133,7 @@ DOCKER_HOST=unix:///Users/$(whoami)/.docker/run/docker.sock skaffold dev
   })
   ```
 - Add Load Balancer
-  - There is currently a bug with `ingress-nginx on DigitalOcean. You can read more about this bug [here](https://github.com/digitalocean/digitalocean-cloud-controller-manager/blob/master/docs/controllers/services/examples/README.md#accessing-pods-over-a-managed-load-balancer-from-inside-the-cluster). To fix it, add the following to the bottom of your `ingress-srv.yaml` manifest. Also, update the URL on this line in the annotations to the domain name you're using: `service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.ticketing-app.fun'`
+  - There is currently a bug with `ingress-nginx` on DigitalOcean. You can read more about this bug [here](https://github.com/digitalocean/digitalocean-cloud-controller-manager/blob/master/docs/controllers/services/examples/README.md#accessing-pods-over-a-managed-load-balancer-from-inside-the-cluster). To fix it, add the following to the bottom of your `ingress-srv.yaml` manifest. Also, update the URL on this line in the annotations to the domain name you're using: `service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.ticketing-app.fun'`
   ```
   ---
   apiVersion: v1
@@ -239,7 +239,7 @@ npm update @library-of-knowledge/common
 ### AppComponent (rendering the child components)
 <img width="881" alt="appComponent" src="https://github.com/GenadiKozarev/ticketing-app/assets/84446009/d1469613-f010-4243-bf66-f5cf1d7186a8">
 
-### knows issues
+### Troubleshooting:
 - Issue 1:
 ```
 getting imageID for {{DOCKER_IMAGE}}: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
@@ -307,6 +307,7 @@ For example, a message like `Module '"@library-of-knowledge/common"' has no expo
 
 - Issue 7:
 Image can't be pulled. Example:
+
 ```
 - deployment/auth-depl: container auth is waiting to start: {{IMAGE_NAME}} can't be pulled
     - pod/auth-depl-654c594fd9-r2mpw: container auth is waiting to start: {{IMAGE_NAME}} can't be pulled
@@ -314,7 +315,8 @@ Image can't be pulled. Example:
 ```
 
   - Fix 7:
-    - update `skaffold.yaml``:
+    - update `skaffold.yaml`:
+
 ```
 build:
   local:

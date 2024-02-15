@@ -8,8 +8,6 @@ eCommerce app using Microservices built with Node, React, Docker and Kubernetes
 - When a user attempts to purchase a ticket, the ticket is "locked" for 15 minutes. The user has 15 minutes to enter their payment info
 - While a ticket is locked, no other user can purchase that ticket. After 15 minutes, that ticket should "unlock"
 
-Live: www.ticketing-app.fun
-
 Demo:
 
 ![ticketing-app-demo](https://github.com/GenadiKozarev/ticketing-app/assets/84446009/22ec00b3-9d0f-4704-aa7e-c24f433edf89)
